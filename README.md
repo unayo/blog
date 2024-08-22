@@ -2,9 +2,12 @@
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+node v20.16.0 (npm v10.8.1)
 @nuxt/content
 @nuxt/ui
- @nuxt/image
+@nuxt/image
+eslint @nuxtjs/eslint-config
+
 ## Setup
 
 Make sure to install the dependencies:
