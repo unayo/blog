@@ -1,6 +1,6 @@
 <template>
-  <div class="px-6 py-8">
-    <div class="container mx-auto flex justify-between">
+  <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto my-4 flex justify-between">
       <div class="w-full lg:w-8/12">
         <div class="flex items-center justify-between">
           <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Post</h1>
@@ -9,7 +9,11 @@
         <div v-for="post in posts" :key="post.id" class="mt-6">
           <PostArticleReview :data="post"></PostArticleReview>
         </div>
-        <PostElPagination class="mt-8" />
+        <PostElPagination
+          class="mt-8"
+          v-model:current="currentPage"
+          v-model:totalpage="posts.length"
+        />
       </div>
       <div class="-mx-8 hidden w-4/12 lg:block">
         <div class="px-8">
@@ -30,6 +34,7 @@
 </template>
 
 <script setup>
+const currentPage = ref(1)
 const posts = reactive([
   {
     id: 1,
@@ -43,6 +48,26 @@ const posts = reactive([
   },
   {
     id: 2,
+    date: 'mar 4, 2019',
+    tag: 'Design',
+    title: 'Accessibility tools for designers and developers',
+    body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!',
+    image:
+      'https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=333&q=80',
+    userName: 'Jane Doe'
+  },
+  {
+    id: 3,
+    date: 'mar 4, 2019',
+    tag: 'Design',
+    title: 'Accessibility tools for designers and developers',
+    body: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!',
+    image:
+      'https://images.unsplash.com/photo-1464863979621-258859e62245?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=333&q=80',
+    userName: 'Jane Doe'
+  },
+  {
+    id: 4,
     date: 'mar 4, 2019',
     tag: 'Design',
     title: 'Accessibility tools for designers and developers',

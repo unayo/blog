@@ -11,6 +11,7 @@ module.exports = {
   plugins: ['prettier'],
   rules: {
     'no-undef': 'off',
-    'prettier/prettier': 'warn'
+    'prettier/prettier': 'warn',
+    'vue/no-v-model-argument': 'warn' // v-model:xxx v-model 自訂參數警告
   }
 }

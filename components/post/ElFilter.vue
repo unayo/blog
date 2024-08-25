@@ -1,6 +1,20 @@
 <template>
-  <select class="block rounded-lg bg-gray-300 px-2 py-2 text-gray-700 focus:outline-none md:py-3">
-    <option>Latest</option>
-    <option>Last Week</option>
-  </select>
+  <USelectMenu
+    selected-icon="i-heroicons-hand-thumb-up-solid"
+    class="w-full lg:w-48"
+    placeholder="Select a person"
+    :options="[
+      'Wade Cooper',
+      'Arlene Mccoy',
+      'Devon Webb',
+      'Tom Cook',
+      'Tanya Fox',
+      'Hellen Schmidt',
+      'Caroline Schultz',
+      'Mason Heaney',
+      'Claudie Smitham',
+      'Emil Schaefer'
+    ]"
+    model-value="Devon Webb"
+  />
 </template>
