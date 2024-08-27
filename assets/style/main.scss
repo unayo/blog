@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自訂 base */
+:root {
+    --header-height: 4rem;
+}
+/* 自訂 components */
+// @layer components {}
+
+/* 自訂 utilities */
+@layer utilities {
+}

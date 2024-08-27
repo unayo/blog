@@ -25,7 +25,7 @@
             {{ navigation[0].children[navigation[0].children.length - 1].title }}
           </a>
         </div>
-        <span class="text-sm font-light text-gray-600">
+        <span class="text-sm font-light">
           {{
             new Date(
               navigation[0].children[navigation[0].children.length - 1].date

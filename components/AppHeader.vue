@@ -1,6 +1,8 @@
 <template>
   <div>
-    <header class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent">
+    <header
+      class="supports-backdrop-blur:bg-white/60 w-full flex-none bg-white/95 backdrop-blur transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] dark:bg-transparent"
+    >
       <div class="mx-auto flex max-w-screen-xl justify-between px-4 sm:px-6 lg:px-8">
         <div class="md:flex md:items-center md:gap-12">
           <NuxtLink to="/" class="block text-teal-600">
@@ -30,19 +32,19 @@
 const menuMiddle = [
   [
     {
-      label: '學習筆記',
-      icon: 'i-heroicons-beaker',
-      to: '/character'
+      label: '主食',
+      icon: 'i-heroicons-cursor-arrow-rays',
+      to: '/character/udon'
     },
     {
-      label: '其他隨筆',
-      icon: 'i-heroicons-bookmark-square',
+      label: '其他食物',
+      icon: 'i-heroicons-cursor-arrow-ripple',
       to: '/components/command-palette'
     },
     {
       label: '所有文章',
       icon: 'i-heroicons-bookmark-square',
-      to: '/components/command-palette'
+      to: '/api/_content/query'
     },
     {
       label: '標籤分類',

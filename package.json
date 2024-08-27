@@ -18,6 +18,7 @@
     "nuxt": "^3.12.4",
     "prettier-eslint": "^16.3.0",
     "prettier-plugin-tailwindcss": "^0.6.6",
+    "sass": "^1.77.8",
     "vue": "latest"
   },
   "devDependencies": {
