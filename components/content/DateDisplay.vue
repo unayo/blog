@@ -6,7 +6,4 @@
   </div>
 </template>
 
-<script setup>
-const { page } = useContent()
-const date = computed(() => page.value?.date)
-</script>
+<script setup></script>
