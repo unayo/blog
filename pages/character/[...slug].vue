@@ -1,22 +1,22 @@
 <template>
-  <main class="flex flex-col lg:grid lg:grid-cols-10 lg:gap-8">
+  <main class="flex flex-col pt-16 lg:grid lg:grid-cols-10 lg:gap-8">
     <div class="lg:col-span-2">
       <aside
-        class="hidden overflow-y-auto py-8 lg:sticky lg:top-[--header-height] lg:-mx-4 lg:block lg:max-h-[calc(100vh-var(--header-height))] lg:px-4"
+        class="hidden overflow-y-auto lg:sticky lg:top-[--header-height] lg:-mx-4 lg:block lg:max-h-[calc(100vh-var(--header-height))] lg:px-4"
       >
         <ContentNavigation v-slot="{ navigation }" :query="queryContent('character')">
           <ul class="space-y-6 lg:space-y-2">
             <li v-for="link of navigation[0].children" :key="link._path">
               <NuxtLink
                 :to="link._path"
-                class="-ml-px block border-l border-transparent pl-4 text-slate-700 hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:border-slate-500 dark:hover:text-slate-300"
+                class="hover:border-l-1 -ml-px block border-l-4 border-transparent pl-4 hover:border-slate-400 hover:text-slate-900"
                 :class="[
                   currentRoute === link._path
-                    ? 'border-slate-400 text-slate-400 dark:border-slate-500'
-                    : ''
+                    ? 'border-indigo-500'
+                    : 'border-slate-400 text-slate-700'
                 ]"
               >
-                {{ link.title }} {{ currentRoute === link._path }}
+                {{ link.title }}
               </NuxtLink>
             </li>
           </ul>
@@ -29,12 +29,6 @@
           <ContentDoc tag="article">
             <template #default="{ doc }">
               <ContentRenderer :value="doc" :components="components" />
-              <br />
-              <br />
-
-              列出:{{'<ContentRenderer :value="doc" :components="components" />'}}
-              <br />
-              {{ doc }}
             </template>
           </ContentDoc>
         </div>
@@ -44,27 +38,17 @@
           >
             <div class="truncate text-sm/6 font-semibold">{{ page.title }}</div>
             <ul v-for="(content, idx) in toc" :key="idx" class="hidden space-y-1 lg:block">
-              <li class="hidden space-y-1 lg:block">
-                <a
-                  class="block truncate text-sm/6"
-                  :href="`#${content.id}`"
-                  :class="{ 'text-primary': content.id === currentSection }"
-                >
-                  {{ content.text }}
-                </a>
+              <li class="hidden space-y-1 lg:block" @click="moveto(content.id)">
+                <p>{{ content.text }}</p>
+
                 <template v-if="content.children">
                   <ul
                     v-for="(chid, indexchid) in content.children"
                     :key="indexchid"
                     class="hidden space-y-1 lg:block"
                   >
-                    <li class="ml-3 hidden space-y-1 lg:block">
-                      <a
-                        class="block truncate text-sm/6 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-                        :class="{ 'text-primary': content.id === currentSection }"
-                        :href="`#${chid.id}`"
-                        >{{ chid.text }}</a
-                      >
+                    <li class="ml-3 hidden space-y-1 lg:block" @click="moveto(chid.id)">
+                      <p>{{ chid.text }}</p>
                     </li>
                   </ul>
                 </template>
@@ -80,12 +64,8 @@
 <script setup>
 const route = useRoute()
 const currentRoute = route.path
-const { navigation, page, surround, globals } = useContent()
+const { page } = useContent()
 const toc = page.value?.body?.toc?.links
-console.log('navigation', navigation.value)
-console.log('page', page.value)
-console.log('surround', surround.value)
-console.log('globals', globals.value)
 
 // 當前節點 id
 const currentSection = ref('')
@@ -100,6 +80,9 @@ const updateCurrentSection = () => {
     }
   })
   currentSection.value = activeSection
+}
+const moveto = (id) => {
+  document.querySelector(`#${id}`).scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 onMounted(() => {
   window.addEventListener('scroll', updateCurrentSection)
