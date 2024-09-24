@@ -44,7 +44,7 @@ const menuMiddle = [
     {
       label: '所有文章',
       icon: 'i-heroicons-bookmark-square',
-      to: '/api/_content/query'
+      to: '/articles/0920'
     },
     {
       label: '標籤分類',
