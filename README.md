@@ -7,8 +7,8 @@ node v20.16.0 (npm v10.8.1)
 @nuxt/ui
 @nuxt/image
 eslint @nuxtjs/eslint-config
---
-shiki
+nuxt-content-twoslash
+
 ## Setup
 
 Make sure to install the dependencies:
